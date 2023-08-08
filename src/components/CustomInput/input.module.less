@@ -1,0 +1,82 @@
+.custom {
+    width: 100%;
+    position: relative;
+    // height: 50px;
+}
+
+.one {
+    height: 60px;
+    position: relative;
+    padding: 10px 10px 0px 10px;
+
+    input {
+        width: 100%;
+        min-width: 300px;
+        height: 100%;
+        // outline: none;
+        box-sizing: border-box;
+        font-size: 1rem;
+        border-radius: 5px;
+        text-indent: 1rem;
+
+        &:focus~span {
+            transform: translate(-.5rem, -150%) scale(.8);
+        }
+        &:focus{
+            background-color: #ffffff !important;
+        }
+
+        // background-color: #ffffff !important;
+    }
+
+    span {
+        position: absolute;
+        left: calc(1rem + 10px); //缩进加上左内边距
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        z-index: 1;
+        font-size: 1rem;
+        transition: 0.2s;
+        background-color: #ffffff;
+    }
+}
+
+.input {
+
+    // color: red;
+    &~span {
+        transform: translate(-.5rem, -150%) scale(.8);
+    }
+
+    // &:valid~span{
+    //     transform: translate(-.5rem, -150%) scale(.8);
+    // }
+}
+
+.default {
+    color: blue;
+
+    &~span {
+        transform: translateY(-50%);
+    }
+}
+
+.redError{
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: red;
+    font-size: .8rem;
+    text-indent: calc(1rem + 10px);
+}
+
+.red{
+    outline-color: red;
+    border-color: red;
+    &~span{
+        color: red;
+    }
+}
