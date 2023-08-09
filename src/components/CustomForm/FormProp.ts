@@ -2,4 +2,5 @@
 export default interface FormProps{
     name:string
     password:string
+    conFirmPw?:string
 }

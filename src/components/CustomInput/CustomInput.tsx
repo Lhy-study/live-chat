@@ -11,7 +11,7 @@ interface InputProps {
   error: FieldError | undefined
   disabled: boolean//用于在登录中不可进行修改
   register: UseFormRegister<FormProps>
-  rules:Array<(v:string)=>boolean|string>
+  rules:Array<(v1:string)=>boolean|string>
   tip:string
   value:string
 }
