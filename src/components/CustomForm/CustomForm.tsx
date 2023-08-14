@@ -3,7 +3,6 @@ import FormProps from "./FormProp";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import CustomInput from "../CustomInput/CustomInput";
 import CustomButton from '../CustomButton/CustomButton';
-import CustomNavLink from '../CustomNavLink/CustomNavLink';
 import FormCss from "./CustomForm.module.less"
 
 type variant = 'Login' | 'Register'
@@ -13,6 +12,7 @@ const AuthForm: React.FC = () => {
     mode: "all",
     reValidateMode: "onChange",
   });
+  const [disabled, setDisabled] = useState(false);
   const [variant, setVariant] = useState<variant>('Login');  //用来分别是渲染登录页面还是注册页面的组件
   const toggleVariant = useCallback(() => {
     if (variant === 'Login') {
@@ -22,15 +22,22 @@ const AuthForm: React.FC = () => {
     }
   }, [variant])
   const Submit: SubmitHandler<FormProps> = data => {
-    // console.log(data);
+    console.log(data);
   };
-
+  
   //传递一个reset方法给CustomButton组件使得可以重置表单
   function resetHandler() {
     reset();
   }
 
-  const [disabled, setDisabled] = useState(false);
+  function LoginHandler(){
+    console.log("登录");
+  }
+
+  function RegHandler(){
+    console.log("注册");
+  }
+
 
   return (
     <form onSubmit={handleSubmit(Submit)}>
@@ -77,15 +84,14 @@ const AuthForm: React.FC = () => {
       <div className={FormCss.btn}>
         {
           variant === 'Login' ?
-            (<CustomButton disabled={false}>登录</CustomButton>) :
-            (<CustomButton disabled={false}>注册</CustomButton>)
+            (<CustomButton disabled={false} onClick={LoginHandler}>登录</CustomButton>) :
+            (<CustomButton disabled={false} onClick={RegHandler}>注册</CustomButton>)
         }
         <CustomButton disabled={false} type='reset' reset={resetHandler}>重置</CustomButton>
       </div>
-      {
-        <p onClick={() => { toggleVariant(); resetHandler() }}>{variant === 'Login' ? '还没有账号？前往注册' : '已有账号，立即登录!'}</p>
-      }
-      <CustomNavLink path='/'>login</CustomNavLink>
+        <p className={FormCss.p}>{variant === 'Login' ? '还没有Live-char账号？' : '已经拥有账号？'} 
+          <span onClick={() => { toggleVariant(); resetHandler() }}>点击前往</span> 
+        </p>
     </form>
   );
 }
