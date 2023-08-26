@@ -1,0 +1,31 @@
+.mixinIcon{
+    display: block;
+    margin-right: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.smallIcon{
+    .mixinIcon();
+    @size:1.5rem;
+    width: @size;
+    height: @size;
+    line-height: @size;
+}
+
+.defaultIcon{
+    .mixinIcon();
+    @size:1.7rem;
+    width: @size;
+    height: @size;
+    line-height: @size;
+    font-size: @size;
+}
+
+.bigIcon{
+    .mixinIcon();
+    @size:2rem;
+    width: @size;
+    height: @size;
+    line-height: @size;
+}

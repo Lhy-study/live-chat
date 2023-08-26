@@ -1,68 +1,78 @@
-.custom {
-    width: 100%;
-    position: relative;
-    // height: 50px;
+@color:#b979c9;
+
+.component{
+    margin: 15px 0;
 }
 
-.one {
-    height: 60px;
+.mixTrans{
+    transform:translate(-.5rem,-130%) scale(.8);
+}
+
+.div{
     position: relative;
-    padding: 10px 10px 0px 10px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 20px;
+    height: 50px;
+    // border: 1px solid rgb(185, 121, 201);
+    box-shadow: 0 0 0 1px #ccc; 
+    border-radius: 5px;
 
-    input {
-        width: 100%;
-        min-width: 300px;
-        height: 100%;
-        // outline: none;
-        box-sizing: border-box;
-        font-size: 1rem;
-        border-radius: 5px;
-        text-indent: 1rem;
-
-        &:focus~span {
-            transform: translate(-.5rem, -150%) scale(.8);
+    &:hover{
+        box-shadow: 0 0 0 1.1px @color;
+        
+        &>label{
+            color: @color;
         }
+    }
+
+    &:focus-within{
+        box-shadow: 0 0 0 1.5px @color; //@color
+    }
+
+    input{
+        flex: 1;
+        height: 85%;
+        border: none;
+        font-size: 16px;
+
         &:focus{
+            outline: none;
             background-color: #ffffff !important;
         }
 
-        // background-color: #ffffff !important;
-    }
+        &:focus ~ .label{
+            .mixTrans();
+            color:  @color;
+        }
 
-    span {
-        position: absolute;
-        left: calc(1rem + 10px); //缩进加上左内边距
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-        z-index: 1;
-        font-size: 1rem;
-        transition: 0.2s;
-        background-color: #ffffff;
     }
 }
 
-.input {
+.label{
+    display: block;
+    position: absolute;
+    pointer-events: none;
+    color: #ccc;
+    // opacity: .7;
+    background-color: #ffffff;
+    transition: transform .2s;
 
-    // color: red;
-    &~span {
-        transform: translate(-.5rem, -150%) scale(.8);
-    }
-
-    // &:valid~span{
-    //     transform: translate(-.5rem, -150%) scale(.8);
-    // }
-}
-
-.default {
-    color: blue;
-
-    &~span {
-        transform: translateY(-50%);
+    &:hover{
+        color:@color;
     }
 }
 
-.redError{
+.success{
+
+    & ~label{
+        .mixTrans();
+    }
+}
+
+//提示信息的样式
+.eMsg{
     width: 100%;
     height: 20px;
     line-height: 20px;
@@ -71,14 +81,13 @@
     color: red;
     // border-color: red;
     font-size: .8rem;
-    text-indent: calc(1rem + 10px);
+    text-indent: 20px
 }
 
-.red{
-    outline-color: red;
-    border-color: red !important;
-    border-left-color:red ;
-    &~span{
-        color: red;
-    }
+.labelErr{
+    color: rgb(218, 88, 88) !important;
+}
+
+.divErr{
+    box-shadow: 0 0 0 1.5px rgb(218, 88, 88) !important;
 }

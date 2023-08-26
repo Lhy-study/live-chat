@@ -3,7 +3,8 @@ import FormProps from "./FormProp";
 import { useForm, SubmitHandler } from 'react-hook-form';
 import CustomInput from "../CustomInput/CustomInput";
 import CustomButton from '../CustomButton/CustomButton';
-import FormCss from "./CustomForm.module.less"
+import FormCss from "./CustomForm.module.less";
+import { login } from '../../api/user';
 
 type variant = 'Login' | 'Register'
 
@@ -21,26 +22,37 @@ const AuthForm: React.FC = () => {
       setVariant('Login')
     }
   }, [variant])
-  const Submit: SubmitHandler<FormProps> = data => {
+  // const submit: SubmitHandler<FormProps> = data => {
+  //   // console.log(data);
+  //   useCallback(()=>{
+
+  //   },[data])
+  // };
+
+  const submit=useCallback((data:FormProps)=>{
+    if(variant === 'Login'){
+      setDisabled(true);
+      login({username:data.name,password:data.password})?.then((res)=>{
+        console.log(res);
+      }).finally(()=>{
+        setDisabled(false)
+        console.log(11);
+      })
+      
+      console.log('登录');
+    }else{
+      console.log('注册');
+    }
     console.log(data);
-  };
+  },[variant])
   
   //传递一个reset方法给CustomButton组件使得可以重置表单
-  function resetHandler() {
+  const resetHandler=useCallback(()=>{
     reset();
-  }
-
-  function LoginHandler(){
-    console.log("登录");
-  }
-
-  function RegHandler(){
-    console.log("注册");
-  }
-
+  },[reset])
 
   return (
-    <form onSubmit={handleSubmit(Submit)}>
+    <form onSubmit={handleSubmit(submit)}>
       <CustomInput
         name='name'
         type='text'
@@ -51,7 +63,7 @@ const AuthForm: React.FC = () => {
         value={watch("name")}
         rules={[
           (v) => v.trim() !== "" || `用户名不可以空`,
-          (v) => /^[\w-]{4,16}$/.test(v) || '4到16位(字母,数字,下划线,减号)'
+          (v) => /^[\u4e00-\u9fa5a-zA-Z0-9]{1,7}$/.test(v) || '请符合中文或字母长度不超过8的用户名'
         ]} />
       <CustomInput
         name='password'
@@ -63,7 +75,7 @@ const AuthForm: React.FC = () => {
         value={watch("password")}
         rules={[
           (v) => v.trim() !== "" || `密码不可以为空`,
-          (v) => /^[\w-]{4,16}$/.test(v) || '4到16位(字母,数字,下划线,减号)'
+          (v) => /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/.test(v) || '8到16位包含字母、数字的密码'
         ]} />
       {
         variant === 'Login' || (
@@ -77,15 +89,15 @@ const AuthForm: React.FC = () => {
           value={watch('conFirmPw')!}
           rules={[
             (v) => v.trim() !== "" || `密码不可以为空`,
-            (v) => /^[\w-]{4,16}$/.test(v) || '4到16位(字母,数字,下划线,减号)',
+            (v) => /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/.test(v) || '8到16位包含字母、数字的密码',
             (v) => v === watch('password') || '两次密码不一致，请重新确认密码'
           ]} />)
       }
       <div className={FormCss.btn}>
         {
           variant === 'Login' ?
-            (<CustomButton disabled={false} onClick={LoginHandler}>登录</CustomButton>) :
-            (<CustomButton disabled={false} onClick={RegHandler}>注册</CustomButton>)
+            (<CustomButton disabled={false} >登录</CustomButton>) :
+            (<CustomButton disabled={false} >注册</CustomButton>)
         }
         <CustomButton disabled={false} type='reset' reset={resetHandler}>重置</CustomButton>
       </div>
