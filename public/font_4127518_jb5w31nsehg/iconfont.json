@@ -1,0 +1,44 @@
+{
+  "id": "4127518",
+  "name": "Live-Chat",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "实时聊天程序应用",
+  "glyphs": [
+    {
+      "icon_id": "201555",
+      "name": "表情",
+      "font_class": "biaoqing1",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "8744791",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e66d",
+      "unicode_decimal": 58989
+    },
+    {
+      "icon_id": "12097406",
+      "name": "发送",
+      "font_class": "fasong",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "12394986",
+      "name": "朋友圈",
+      "font_class": "pengyouquan",
+      "unicode": "e6ad",
+      "unicode_decimal": 59053
+    },
+    {
+      "icon_id": "22978032",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e89f",
+      "unicode_decimal": 59551
+    }
+  ]
+}

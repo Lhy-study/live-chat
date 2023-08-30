@@ -1,10 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import FormProps from "./FormProp";
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router-dom"
+import { login, reg } from '../../api/user';
+import { ToastContainer, toast } from "react-toastify"
 import CustomInput from "../CustomInput/CustomInput";
 import CustomButton from '../CustomButton/CustomButton';
 import FormCss from "./CustomForm.module.less";
-import { login } from '../../api/user';
 
 type variant = 'Login' | 'Register'
 
@@ -13,6 +15,7 @@ const AuthForm: React.FC = () => {
     mode: "all",
     reValidateMode: "onChange",
   });
+  const navigate=useNavigate();
   const [disabled, setDisabled] = useState(false);
   const [variant, setVariant] = useState<variant>('Login');  //用来分别是渲染登录页面还是注册页面的组件
   const toggleVariant = useCallback(() => {
@@ -22,34 +25,61 @@ const AuthForm: React.FC = () => {
       setVariant('Login')
     }
   }, [variant])
-  // const submit: SubmitHandler<FormProps> = data => {
-  //   // console.log(data);
-  //   useCallback(()=>{
 
-  //   },[data])
-  // };
-
-  const submit=useCallback((data:FormProps)=>{
-    if(variant === 'Login'){
+  const submit = useCallback((data: FormProps) => {
+    if (variant === 'Login') {
       setDisabled(true);
-      login({username:data.name,password:data.password})?.then((res)=>{
-        console.log(res);
-      }).finally(()=>{
+      const promise = login({ username: data.name, password: data.password })?.then((res) => {
+        //登录成功后要做的事情
+        const {data}=res;
+        console.log(data);
+
+        localStorage.setItem("live-chat",data.token);
+        
+        setTimeout(()=>{
+          navigate("/home")
+        },3000)
+      }).finally(() => {
         setDisabled(false)
-        console.log(11);
+        //兜底操作
       })
-      
-      console.log('登录');
-    }else{
-      console.log('注册');
+      //消息提示
+      toast.promise(
+        promise,
+        {
+          pending: '登录中',
+          success: '用户登录成功 👌,3s后将跳转到聊天页面',
+          error: '登录失败🤯，请检查用户名或密码'
+        }
+      )
+    } else {
+      setDisabled(true);
+      const promise = reg({
+        username: data.name,
+        password: data.password
+      }).then((res) => {
+        // console.log(res);
+
+      }).finally(() => {
+        setDisabled(false)
+      })
+      //消息提示
+      toast.promise(
+        promise,
+        {
+          pending: '登录中',
+          success: '用户登录成功 👌',
+          error: '登录失败🤯，请检查用户名或密码'
+        }
+      )
     }
-    console.log(data);
-  },[variant])
-  
+    //消息提示
+  }, [variant])
+
   //传递一个reset方法给CustomButton组件使得可以重置表单
-  const resetHandler=useCallback(()=>{
+  const resetHandler = useCallback(() => {
     reset();
-  },[reset])
+  }, [reset])
 
   return (
     <form onSubmit={handleSubmit(submit)}>
@@ -79,19 +109,19 @@ const AuthForm: React.FC = () => {
         ]} />
       {
         variant === 'Login' || (
-        <CustomInput
-          name='conFirmPw'
-          type='password'
-          tip='确认密码'
-          register={register}
-          error={errors.conFirmPw}
-          disabled={disabled}
-          value={watch('conFirmPw')!}
-          rules={[
-            (v) => v.trim() !== "" || `密码不可以为空`,
-            (v) => /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/.test(v) || '8到16位包含字母、数字的密码',
-            (v) => v === watch('password') || '两次密码不一致，请重新确认密码'
-          ]} />)
+          <CustomInput
+            name='conFirmPw'
+            type='password'
+            tip='确认密码'
+            register={register}
+            error={errors.conFirmPw}
+            disabled={disabled}
+            value={watch('conFirmPw')!}
+            rules={[
+              (v) => v.trim() !== "" || `密码不可以为空`,
+              (v) => /^(?=.*[0-9])(?=.*[a-zA-Z])[0-9a-zA-Z]{8,16}$/.test(v) || '8到16位包含字母、数字的密码',
+              (v) => v === watch('password') || '两次密码不一致，请重新确认密码'
+            ]} />)
       }
       <div className={FormCss.btn}>
         {
@@ -101,9 +131,14 @@ const AuthForm: React.FC = () => {
         }
         <CustomButton disabled={false} type='reset' reset={resetHandler}>重置</CustomButton>
       </div>
-        <p className={FormCss.p}>{variant === 'Login' ? '还没有Live-char账号？' : '已经拥有账号？'} 
-          <span onClick={() => { toggleVariant(); resetHandler() }}>点击前往</span> 
-        </p>
+      <p className={FormCss.p}>{variant === 'Login' ? '还没有Live-char账号？' : '已经拥有账号？'}
+        <span onClick={() => { toggleVariant(); resetHandler() }}>点击前往</span>
+      </p>
+      <ToastContainer
+        position='top-center'
+        theme="colored"
+        autoClose={3000}
+      />
     </form>
   );
 }

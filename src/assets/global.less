@@ -1,0 +1,98 @@
+html,
+body #root {
+    height: 100vh;
+    background-color: #f3f5f7;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-size: 1rem;
+    color:inherit;
+}
+
+::-webkit-scrollbar {
+    width: 5px; /* 设置滚动条宽度 */
+    height: 0px;
+}
+
+// /* 隐藏滚动条轨道，使其不占据空间 */
+// ::-webkit-scrollbar {
+//     width: 0;
+//     height: 0;
+//     background-color: transparent;
+//   }
+
+/* 修改垂直滚动条的样式 */
+::-webkit-scrollbar {
+    overflow-y: scroll;  /* 始终显示垂直滚动条 */
+    margin-right: -5px; /* 负边距来抵消滚动条的宽度 */
+    padding-right: 5px; /* 添加填充来保留滚动内容不被滚动条遮挡 */
+  }
+  
+  
+
+/* 修改滚动条的轨道颜色 */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* 设置轨道背景颜色 */
+  }
+  
+  /* 修改滚动条的滑块颜色 */
+  ::-webkit-scrollbar-thumb {
+    background-color: #888; /* 设置滑块背景颜色 */
+  }
+  
+  /* 修改滚动条的滑块在hover状态时的颜色 */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* 设置滑块hover状态时的颜色 */
+  }
+  
+
+/* Chrome, Safari, Edge等使用Webkit内核的浏览器 */
+input:-webkit-autofill {
+    background-color: #fff;
+    /* 设置背景颜色为白色 */
+}
+
+/* Firefox使用Gecko内核的浏览器 */
+input:-moz-autofill {
+    background-color: #fff;
+    /* 设置背景颜色为白色 */
+}
+
+
+/* 频幕非常大的情况下 */
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+
+    .container{
+        width: 75%;
+        height: 80%;
+        display: flex;
+        // border:1px solid #201f1f;
+        border-radius: 1%;
+        overflow: hidden;
+        box-shadow: 0px 1px 1px 3px #ccc;
+    }
+}
+
+@media screen and (min-width:1268px) and (max-width:1880px){
+    .home{
+        .container{
+            width: 95%;
+            height: 95%;
+        }
+    }
+}
+
+@media screen and (max-width:764px){
+    html{
+        font-size: 62.5%;
+    }
+}

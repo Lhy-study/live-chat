@@ -1,19 +1,46 @@
-import main from "./router/main"
-import { RouteObject, useRoutes} from "react-router-dom"
-// import Login from "./pages/test/gptForm"
-import "./assets/global.css"
+// import main from "./router/main"
+// import { RouteObject, useRoutes} from "react-router-dom"
+// import {Suspense} from "react"
+// // import Login from "./pages/test/gptForm"
+// import "../public/font_4127518_jb5w31nsehg/iconfont.css"
+// import "./assets/global.less"
 
+// function App() {
+//   const e=useRoutes(main as unknown as RouteObject[])
+//   return (
+//     <>
+//         {/* <Home /> */}
+//         <Suspense>
+//           {e}
+//         </Suspense>
+//         {/* <Outlet /> */}
+//         {/* <Login /> */}
+//     </>
+//   )
+// }
+
+// export default App
+
+
+import { lazy, Suspense } from "react"
+import { Route, Routes } from "react-router-dom"
+import "react-toastify/ReactToastify.css"
+import "../public/font_4127518_jb5w31nsehg/iconfont.css"
+import "./assets/global.less"
 function App() {
-  const e=useRoutes(main as RouteObject[])
+  const Login = lazy(() => import("./pages/Login/Login"))
+  const Home = lazy(() => import("./pages/Home/Home"))
   return (
     <>
-      <div>
-        {e}
-        {/* <Outlet /> */}
-        {/* <Login /> */}
-      </div>
+      <Suspense >
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+        </Routes>
+      </Suspense>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
+
