@@ -6,6 +6,34 @@
   "description": "实时聊天程序应用",
   "glyphs": [
     {
+      "icon_id": "5387656",
+      "name": "添加好友",
+      "font_class": "tianjiahaoyou",
+      "unicode": "eb26",
+      "unicode_decimal": 60198
+    },
+    {
+      "icon_id": "4608987",
+      "name": "联系人",
+      "font_class": "lianxiren",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    },
+    {
+      "icon_id": "18170188",
+      "name": "退出,出",
+      "font_class": "exit-full",
+      "unicode": "e97f",
+      "unicode_decimal": 59775
+    },
+    {
+      "icon_id": "33986996",
+      "name": "消息-置灰",
+      "font_class": "xiaoxi-zhihui",
+      "unicode": "e61d",
+      "unicode_decimal": 58909
+    },
+    {
       "icon_id": "201555",
       "name": "表情",
       "font_class": "biaoqing1",

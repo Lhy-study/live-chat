@@ -1,14 +1,24 @@
-import Chat from "../../layout/Chat/Chat"
-import LeftSideBar from "../../layout/LeftSideBar/LeftSideBar"
-
-LeftSideBar
+import LeftSideBar from "../../layout/LeftSideBar/LeftSideBar";
+import MobileBar from "@/layout/MobileBar/MobileBar";
+import { Navigate } from "react-router";
+import { UserInfoContext ,type UserInfoContextType} from "@/context/userContext"
+import { useContext } from "react";
+import { type UserInfo } from "@/interface";
+import EmptyState from "@/components/EmptyState/EmptyState";
 const Home = () => {
+  const { userInfo } = useContext(UserInfoContext) as UserInfoContextType
+  const { uid } = userInfo as UserInfo
   return (
     <div className="home">
+      {
+        uid ? <></> : <Navigate to={"/"} />
+      }
       <div className="container">
         <LeftSideBar />
-        <Chat />
-        {/* <h1>woshihome</h1> */}
+        <MobileBar />
+        <main>
+          <EmptyState />
+        </main>
       </div>
     </div>
   )

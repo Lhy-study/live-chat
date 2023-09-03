@@ -9,7 +9,7 @@ const request=axios.create({
 
 //响应拦截
 request.interceptors.request.use(config=>{
-    const token=localStorage.getItem("matterToken");
+    const token=localStorage.getItem("live-chat");
     if(token){
         config.headers.Authorization=token
     }

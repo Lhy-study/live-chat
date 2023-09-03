@@ -7,10 +7,18 @@ import { ToastContainer, toast } from "react-toastify"
 import CustomInput from "../CustomInput/CustomInput";
 import CustomButton from '../CustomButton/CustomButton';
 import FormCss from "./CustomForm.module.less";
+import { useContext } from "react"
+import { UserInfoContext ,type UserInfoContextType} from "@/context/userContext"
 
-type variant = 'Login' | 'Register'
+interface errortype{
+  msg:string
+  code:number
+}
+
+type variant = 'Login' | 'Register' //是登录还是注册界面
 
 const AuthForm: React.FC = () => {
+  const { updateUserInfo } =useContext(UserInfoContext) as UserInfoContextType
   const { formState: { errors }, register, handleSubmit, watch, reset } = useForm<FormProps>({
     mode: "all",
     reValidateMode: "onChange",
@@ -33,6 +41,7 @@ const AuthForm: React.FC = () => {
         //登录成功后要做的事情
         const {data}=res;
         console.log(data);
+        updateUserInfo(data.data)
 
         localStorage.setItem("live-chat",data.token);
         
@@ -57,19 +66,23 @@ const AuthForm: React.FC = () => {
       const promise = reg({
         username: data.name,
         password: data.password
-      }).then((res) => {
-        // console.log(res);
-
+      }).then(() => {
+        //清空输入框的值
+        resetHandler();
       }).finally(() => {
-        setDisabled(false)
+        setDisabled(false);
       })
       //消息提示
       toast.promise(
         promise,
         {
-          pending: '登录中',
-          success: '用户登录成功 👌',
-          error: '登录失败🤯，请检查用户名或密码'
+          pending: '注册中',
+          success: '用户注册成功 👌',
+          error: {
+            render({data}){
+              return `${(data as errortype).msg }`
+            }
+          }
         }
       )
     }

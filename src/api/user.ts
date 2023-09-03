@@ -15,3 +15,10 @@ export const reg=(obj:{username:string,password:string})=>{
         data:obj
     })
 }
+
+export const isLogin=()=>{
+    return initRequest({
+        method:"get",
+        url:"user/islogin"
+    })
+}

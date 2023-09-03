@@ -1,0 +1,26 @@
+.mobileBar {
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    display: none;
+
+    ul{
+        display: flex;
+        justify-content: space-around;
+
+        li{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.5rem;
+        }
+    }
+}
+
+@media screen and(max-width:1024px) {
+    .mobileBar {
+        width: 100%;
+        display: block;
+    }
+}
