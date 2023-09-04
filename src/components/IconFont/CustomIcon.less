@@ -1,35 +1,27 @@
-.mixinIcon{
-    display: block;
+.mixinIcon {
+    overflow: hidden;
     cursor: pointer;
+    background: none;
     text-align: center;
-    &:hover{
-        color: rgb(107, 142, 142) !important;
-    }
 }
 
-.smallIcon{
+.smallIcon {
     .mixinIcon();
-    @size:1.5rem;
-    width: @size;
-    height: @size;
+    @size: 1.5rem;
     line-height: @size;
     font-size: @size !important;
 }
 
-.defaultIcon{
+.defaultIcon {
     .mixinIcon();
-    @size:1.7rem;
-    width: @size;
-    height: @size;
+    @size: 1.7rem;
     line-height: @size;
     font-size: @size !important;
 }
 
-.bigIcon{
+.bigIcon {
     .mixinIcon();
-    @size:2rem;
-    width: @size;
-    height: @size;
+    @size: 2rem;
     line-height: @size;
     font-size: @size !important;
 }

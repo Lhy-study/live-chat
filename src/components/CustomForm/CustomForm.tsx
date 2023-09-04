@@ -8,7 +8,7 @@ import CustomInput from "../CustomInput/CustomInput";
 import CustomButton from '../CustomButton/CustomButton';
 import FormCss from "./CustomForm.module.less";
 import { useContext } from "react"
-import { UserInfoContext ,type UserInfoContextType} from "@/context/userContext"
+import { UserInfoContext ,type UserInfoContextType} from "@/Context/userContext"
 
 interface errortype{
   msg:string

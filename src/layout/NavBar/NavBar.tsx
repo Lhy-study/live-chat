@@ -5,10 +5,13 @@ import { NavLink } from "react-router-dom";
 
 const list = [
   {
-    name: "icon-tianjiahaoyou"
+    name: "icon-xiaoxi-zhihui",
+    path:"/conversation"
+    // path:"/"
   },
   {
-    name: "icon-lianxiren"
+    name: "icon-lianxiren",
+    path:"/contacts"
   },
   {
     name: "icon-exit-full"
@@ -20,7 +23,7 @@ const NavBar = () => {
       <ul className="navTop">
         {
           list.map((item) => (
-            <NavLink to="/home" key={item.name} className={({isActive})=>isActive ? 'active' : '' }><li>
+            <NavLink to={`/home`+item.path} key={item.name} className={({isActive})=>isActive ? 'active' : '' }><li>
               <CustomIcon name={item.name} size="big"/>
             </li></NavLink>
           ))

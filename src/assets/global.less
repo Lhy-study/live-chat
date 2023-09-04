@@ -1,7 +1,7 @@
 html,
 body #root {
     height: 100vh;
-    background-color: #f3f5f7;
+    background-color: #ffffff;
 }
 
 * {
@@ -12,6 +12,7 @@ body #root {
     box-sizing: border-box;
     font-size: 1rem;
     color: inherit;
+    background-color: inherit;
 }
 
 ::-webkit-scrollbar {
@@ -86,14 +87,36 @@ input:-moz-autofill {
     }
 }
 
+a{
+    display: block;
+    width: 3rem;
+    height: 3rem;
+}
+
 main {
     padding-left: 5rem;
     height: 100%;
+    display: flex;
+    .bar{
+        width: 20rem;
+        border-left: 2px solid #e5e7eb;
+    }
+
+    @media screen and (max-width:1024px){
+        .bar{
+            width: 100%;
+            border: none;
+        }
+    }
+
+    .content{
+        flex: 1;
+    }
 }
 
 //路由选中
 .active{
-    background-color: aliceblue;
+    background-color: #f2eded !important;
 }
 
 @media screen and (max-width:1024px) {
