@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom"
 import NavLinkCss from "./CustomNavLink.module.css"
+import { ReactNode } from "react"
 
 interface NavLink{
     path:string
-    children:string
+    children:ReactNode
 }
 
 const CustomNavLink:React.FC<NavLink> = ({path,children}) => {

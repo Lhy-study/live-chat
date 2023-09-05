@@ -6,12 +6,11 @@ type iconsize = 'small'|'default'|'big'
 interface IconProp{
     name:string
     size?:iconsize
-    color?:string
 }
 
-const CustomIcon:React.FC<IconProp> = memo(({name,size='default',color='#ccc'}) => {
+const CustomIcon:React.FC<IconProp> = memo(({name,size='default'}) => {
   return (
-            <span className={clsx('iconfont',name,clsx(`${size}Icon`))} style={{color:color}}></span>
+            <span className={clsx('iconfont',name,clsx(`${size}Icon`))} ></span>
   )
 })
 export default CustomIcon

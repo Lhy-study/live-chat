@@ -15,7 +15,7 @@ const CustomImage: React.FC<imageProps> = memo(({
         setUrl(img);
     },[])
     return (
-        <img src={imgUrl} alt="" style={{ width, height,objectFit:"cover"}} onError={err}/>
+        <img src={imgUrl} alt="" style={{ width, height,objectFit:"cover",borderRadius:"50%"}} onError={err}/>
     )
 })
 export default CustomImage
