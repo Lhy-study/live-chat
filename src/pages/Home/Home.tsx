@@ -2,10 +2,10 @@ import LeftSideBar from "../../layout/LeftSideBar/LeftSideBar";
 import MobileBar from "@/layout/MobileBar/MobileBar";
 import { Outlet } from "react-router-dom"
 import { Navigate } from "react-router";
-import { UserInfoContext ,type UserInfoContextType} from "@/Context/userContext"
+import { UserInfoContext, type UserInfoContextType } from "@/Context/userContext"
 import { useContext } from "react";
 import { type UserInfo } from "@/interface";
-import EmptyState from "@/components/EmptyState/EmptyState";
+// import EmptyState from "@/components/EmptyState/EmptyState";
 const Home = () => {
   const { userInfo } = useContext(UserInfoContext) as UserInfoContextType
   const { uid } = userInfo as UserInfo
@@ -18,12 +18,7 @@ const Home = () => {
         <LeftSideBar />
         <MobileBar />
         <main>
-          <div className="bar">
-            <Outlet />
-          </div>
-          <div className="content">
-            <EmptyState />
-          </div>
+          <Outlet />
         </main>
       </div>
     </div>

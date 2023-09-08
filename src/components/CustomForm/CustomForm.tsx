@@ -8,46 +8,49 @@ import CustomInput from "../CustomInput/CustomInput";
 import CustomButton from '../CustomButton/CustomButton';
 import FormCss from "./CustomForm.module.less";
 import { useContext } from "react"
-import { UserInfoContext ,type UserInfoContextType} from "@/Context/userContext"
+import { UserInfoContext, type UserInfoContextType } from "@/Context/userContext"
 
-interface errortype{
-  msg:string
-  code:number
+interface errortype {
+  msg: string
+  code: number
 }
 
 type variant = 'Login' | 'Register' //是登录还是注册界面
 
 const AuthForm: React.FC = () => {
-  const { updateUserInfo } =useContext(UserInfoContext) as UserInfoContextType
+  const { updateUserInfo } = useContext(UserInfoContext) as UserInfoContextType
   const { formState: { errors }, register, handleSubmit, watch, reset } = useForm<FormProps>({
     mode: "all",
     reValidateMode: "onChange",
   });
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [disabled, setDisabled] = useState(false);
   const [variant, setVariant] = useState<variant>('Login');  //用来分别是渲染登录页面还是注册页面的组件
   const toggleVariant = useCallback(() => {
     if (variant === 'Login') {
+      
       setVariant('Register')
     } else {
       setVariant('Login')
     }
   }, [variant])
 
-  const submit = useCallback((data: FormProps) => {
+  const submit = (data: FormProps) => {
     if (variant === 'Login') {
+      // console.log(variant);
+      
       setDisabled(true);
       const promise = login({ username: data.name, password: data.password })?.then((res) => {
         //登录成功后要做的事情
-        const {data}=res;
-        console.log(data);
+        const { data } = res;
+        // console.log(data);
         updateUserInfo(data.data)
 
-        localStorage.setItem("live-chat",data.token);
-        
-        setTimeout(()=>{
-          navigate("/home")
-        },3000)
+        localStorage.setItem("live-chat", data.token);
+
+        setTimeout(() => {
+          navigate("/home/conversation")
+        }, 3000)
       }).finally(() => {
         setDisabled(false)
         //兜底操作
@@ -79,15 +82,15 @@ const AuthForm: React.FC = () => {
           pending: '注册中',
           success: '用户注册成功 👌',
           error: {
-            render({data}){
-              return `${(data as errortype).msg }`
+            render({ data }) {
+              return `${(data as errortype).msg}`
             }
           }
         }
       )
     }
     //消息提示
-  }, [variant])
+  }
 
   //传递一个reset方法给CustomButton组件使得可以重置表单
   const resetHandler = useCallback(() => {

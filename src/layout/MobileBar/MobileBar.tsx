@@ -1,6 +1,8 @@
 import CustomIcon from "@/components/IconFont/CustomIcon";
 import "./MobileBar.less"
 import CustomNavLink from "@/components/CustomNavLink/CustomNavLink";
+import PubSub from "pubsub-js";
+import { useState } from "react"
 const list = [
   {
     name: "icon-xiaoxi-zhihui",
@@ -16,22 +18,30 @@ const list = [
   }
 ]
 const MobileBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const Subscriber = (msg: string, value: boolean) => {
+    setIsOpen(value)
+  }
+  PubSub.subscribe("change", Subscriber)
   return (
-    <div className="mobileBar">
-      <ul>
-        {
-          list.map((item) => (
+    <>
+      {
+        !isOpen && <div className="mobileBar">
+          <ul>
+            {
+              list.map((item) => (
 
-            <li key={item.name}>
-              <CustomNavLink path={item.path}>
-                <CustomIcon name={item.name} size="big" />
-              </CustomNavLink>
-            </li>
-
-          ))
-        }
-      </ul>
-    </div>
+                <li key={item.name}>
+                  <CustomNavLink path={item.path}>
+                    <CustomIcon name={item.name} size="big" />
+                  </CustomNavLink>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      }
+    </>
   )
 }
 export default MobileBar

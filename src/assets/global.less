@@ -99,22 +99,6 @@ a{
 main {
     padding-left: 5rem;
     height: 100%;
-    display: flex;
-    .bar{
-        width: 20rem;
-        border-left: 2px solid #e5e7eb;
-    }
-
-    @media screen and (max-width:1024px){
-        .bar{
-            width: 100%;
-            border: none;
-        }
-    }
-
-    .content{
-        flex: 1;
-    }
 }
 
 //路由选中
@@ -122,11 +106,14 @@ main {
     background-color: #f2eded !important;
 }
 
+//当状态为打开时
+.hidden{
+    display: none;
+}
 
 @media screen and (max-width:1024px) {
     main {
         padding-left: 0px;
-        height: calc(100% - 3rem);
     }
 }
 

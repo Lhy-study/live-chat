@@ -1,6 +1,10 @@
+import "./Conversation.less"
+import Layout from "../Layout"
 const Conversation = () => {
   return (
-    <div>Conversation</div>
+    <Layout>
+      <p>nihao</p>
+    </Layout>
   )
 }
 export default Conversation

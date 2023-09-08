@@ -4,6 +4,7 @@ import { UserInfoProvider } from "@/Context/userContext"
 import "react-toastify/ReactToastify.css"
 import "../public/font_4127518_jb5w31nsehg/iconfont.css"
 import "./assets/global.less"
+import Chat from "./layout/Chat/Chat"
 function App() {
 
   const Login = lazy(() => import("@/pages/Login/Login"));
@@ -18,7 +19,9 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/home" element={<Home />}>
               <Route path="/home/contacts" element={<Contacts/>}> </Route>
-              <Route path="/home/conversation" element={<Conversation/>}> </Route>
+              <Route path="/home/conversation" element={<Conversation/>}> 
+                <Route path="/home/conversation/:uid" element={<Chat/>}/>
+              </Route>
             </Route>
           </Routes>
         </Suspense>

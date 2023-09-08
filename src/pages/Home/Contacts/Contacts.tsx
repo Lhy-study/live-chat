@@ -4,29 +4,31 @@ import Mask from "@/components/Mask/Mask"
 import UserList from "@/components/UserList/UserList"
 import AddFriendForm from "@/components/AddFriendFrom/AddFriendForm"
 import testImage from "@/assets/react.svg"
-
 import { useState } from "react"
+import Layout from "../Layout"
+
 const Contacts = () => {
   const [show, setShow] = useState(false);
-  const arr=[
+  const arr = [
     {
-      url:testImage,
-      name:"nihao",
-      id:1
+      url: testImage,
+      name: "nihao",
+      id: 1
     }
   ]
-
   //打开遮罩层
-  function handle(){
+  function handle() {
     setShow(true)
   }
 
   //关闭遮罩层
-  function unhandle(){
+  function unhandle() {
     setShow(false);
   }
+
+
   return (
-    <div className="contact">
+    <Layout>
       <header>
         <p>联系人</p>
         <div onClick={handle}>
@@ -34,8 +36,8 @@ const Contacts = () => {
         </div>
       </header>
       {
-        arr.map(item=>(
-          <UserList id={item.id} name={item.name} imgUrl={item.url} key={item.id}/>
+        arr.map(item => (
+          <UserList id={item.id} name={item.name} imgUrl={item.url} key={item.id} />
         ))
       }
       {
@@ -43,7 +45,7 @@ const Contacts = () => {
           <AddFriendForm />
         </Mask>
       }
-    </div>
+    </Layout>
   )
 }
 export default Contacts

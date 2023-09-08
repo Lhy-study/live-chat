@@ -5,8 +5,8 @@ const TopSider = () => {
     <div className="topSider">
       <p>Jane</p>
       <div className="fc">
-        <CustomIcon name="icon-shezhi" color="black" size="big"/>
-        <CustomIcon name="icon-pengyouquan" color="black" size="big"/>
+        <CustomIcon name="icon-shezhi" size="big"/>
+        <CustomIcon name="icon-pengyouquan" size="big"/>
       </div>
     </div>
   )
