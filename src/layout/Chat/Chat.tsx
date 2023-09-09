@@ -3,11 +3,11 @@ import SendMsg from "@/components/SendMsg/SendMsg"
 import TopSider from "@/components/TopSider/TopSider"
 import main from "./Chat.module.less"
 import { useParams } from "react-router"
-import { useEffect } from "react"
+import { useEffect , memo} from "react"
 import PubSub from "pubsub-js"
 
 
-const Chat = () => {
+const Chat = memo(() => {
   const { uid }=useParams()//拿到uid
   useEffect(()=>{
     PubSub.publish("change",true);
@@ -23,5 +23,5 @@ const Chat = () => {
       <SendMsg />
     </div>
   )
-}
+})
 export default Chat

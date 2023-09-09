@@ -1,5 +1,6 @@
 import "./ChatInfo.less"
-const ChatInfo = () => {
+import { memo } from "react"
+const ChatInfo = memo(() => {
   return (
     <div className="chatInfo">
         <p>1</p>
@@ -13,5 +14,5 @@ const ChatInfo = () => {
         <p>3</p>
     </div>
   )
-}
+})
 export default ChatInfo

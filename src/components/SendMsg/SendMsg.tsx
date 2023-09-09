@@ -1,6 +1,7 @@
 import "./SendMsg.less"
+import { memo } from "react"
 import IconFont from "@/components/IconFont/CustomIcon"
-const SendMsg = () => {
+const SendMsg = memo(() => {
   return (
     <div className="sendMsg">
       <div className="widgets">
@@ -13,5 +14,5 @@ const SendMsg = () => {
       </div>
     </div>
   )
-}
+})
 export default SendMsg

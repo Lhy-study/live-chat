@@ -1,14 +1,15 @@
 import "./Contacts.less"
 import CustomIcon from "@/components/IconFont/CustomIcon"
-import Mask from "@/components/Mask/Mask"
 import UserList from "@/components/UserList/UserList"
-import AddFriendForm from "@/components/AddFriendFrom/AddFriendForm"
 import testImage from "@/assets/react.svg"
-import { useState } from "react"
 import Layout from "../Layout"
+import PubSub from "pubsub-js"
+import { memo } from "react"
 
-const Contacts = () => {
-  const [show, setShow] = useState(false);
+const Contacts = memo(() => {
+  const handle=()=>{
+    PubSub.publish("openDialog",true)
+  }
   const arr = [
     {
       url: testImage,
@@ -16,17 +17,6 @@ const Contacts = () => {
       id: 1
     }
   ]
-  //打开遮罩层
-  function handle() {
-    setShow(true)
-  }
-
-  //关闭遮罩层
-  function unhandle() {
-    setShow(false);
-  }
-
-
   return (
     <Layout>
       <header>
@@ -40,12 +30,7 @@ const Contacts = () => {
           <UserList id={item.id} name={item.name} imgUrl={item.url} key={item.id} />
         ))
       }
-      {
-        show && <Mask callback={unhandle}>
-          <AddFriendForm />
-        </Mask>
-      }
     </Layout>
   )
-}
+})
 export default Contacts

@@ -1,11 +1,12 @@
 import "./UserList.less";
+import { memo } from "react"
 import CustomImage from "../CustomImage/CustomImage";
 interface UserListProp {
     imgUrl: string,
     name: string,
     id: number
 }
-const UserLIst: React.FC<UserListProp> = ({
+const UserLIst: React.FC<UserListProp> = memo(({
     imgUrl,
     name,
     id
@@ -18,5 +19,5 @@ const UserLIst: React.FC<UserListProp> = ({
             <p>{name}</p>
         </div>
     )
-}
+})
 export default UserLIst

@@ -1,6 +1,7 @@
 import "./TopSider.less"
 import CustomIcon from "../IconFont/CustomIcon"
-const TopSider = () => {
+import { memo } from "react"
+const TopSider = memo(() => {
   return (
     <div className="topSider">
       <p>Jane</p>
@@ -10,5 +11,5 @@ const TopSider = () => {
       </div>
     </div>
   )
-}
+})
 export default TopSider

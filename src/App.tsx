@@ -1,12 +1,19 @@
-import { lazy, Suspense,StrictMode} from "react"
+import { lazy, Suspense,StrictMode , useState} from "react"
 import { Route, Routes } from "react-router-dom"
 import { UserInfoProvider } from "@/Context/userContext"
+import AddFriendForm from "@/components/AddFriendFrom/AddFriendForm"
+import Mask from "@/components/Mask/Mask"
+import Chat from "./layout/Chat/Chat"
 import "react-toastify/ReactToastify.css"
 import "../public/font_4127518_jb5w31nsehg/iconfont.css"
 import "./assets/global.less"
-import Chat from "./layout/Chat/Chat"
+import PubSub from "pubsub-js"
 function App() {
-
+  const [ show,setShow ] =useState(false) 
+  const subscribe=(_:string,data:boolean)=>{
+    setShow(data);
+  }
+  PubSub.subscribe("openDialog",subscribe)
   const Login = lazy(() => import("@/pages/Login/Login"));
   const Home = lazy(() => import("@/pages/Home/Home"));
   const Contacts=lazy(()=>import("@/pages/Home/Contacts/Contacts"));
@@ -24,6 +31,11 @@ function App() {
               </Route>
             </Route>
           </Routes>
+          {
+        show && <Mask callback={()=>setShow(false)}>
+          <AddFriendForm />
+        </Mask>
+      }
         </Suspense>
       </UserInfoProvider>
     </StrictMode>

@@ -1,11 +1,11 @@
 import NavBar from "@/layout/NavBar/NavBar"
 import main from "./LeftSideBar.module.less"
 import CustomImage from "@/components/CustomImage/CustomImage"
-import { useContext } from "react"
+import { useContext , memo} from "react"
 import { UserInfoContext, type UserInfoContextType } from "@/Context/userContext"
 import { type UserInfo } from "@/interface"
 import { baseUrl } from "@/baseConfig"
-const LeftSideBar = () => {
+const LeftSideBar = memo(() => {
   const { userInfo } = useContext(UserInfoContext) as UserInfoContextType
   const { avatar } = userInfo as UserInfo
   return (
@@ -20,5 +20,5 @@ const LeftSideBar = () => {
       </div>
     </div>
   )
-}
+})
 export default LeftSideBar

@@ -1,5 +1,6 @@
 import "./empty.less";
-const EmptyState = () => {
+import { memo } from "react"
+const EmptyState = memo(() => {
   return (
     <div className="empty">
         <div>
@@ -9,5 +10,5 @@ const EmptyState = () => {
         </div>
     </div>
   )
-}
+})
 export default EmptyState

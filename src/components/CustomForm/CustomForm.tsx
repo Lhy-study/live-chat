@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback ,memo} from 'react';
 import FormProps from "./FormProp";
 import { useForm } from 'react-hook-form';
 import { useNavigate } from "react-router-dom"
@@ -17,7 +17,7 @@ interface errortype {
 
 type variant = 'Login' | 'Register' //是登录还是注册界面
 
-const AuthForm: React.FC = () => {
+const AuthForm: React.FC = memo(() => {
   const { updateUserInfo } = useContext(UserInfoContext) as UserInfoContextType
   const { formState: { errors }, register, handleSubmit, watch, reset } = useForm<FormProps>({
     mode: "all",
@@ -157,6 +157,6 @@ const AuthForm: React.FC = () => {
       />
     </form>
   );
-}
+})
 
 export default AuthForm;

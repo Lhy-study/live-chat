@@ -2,6 +2,7 @@
 import React from 'react'
 import FormProps from "../CustomForm/FormProp";
 import { FieldError, UseFormRegister } from "react-hook-form";
+import { memo } from "react"
 import custom from "./input.module.less"
 import clsx from 'clsx';
 
@@ -16,7 +17,7 @@ interface InputProps {
   value:string
 }
 
-const customInput: React.FC<InputProps> = ({
+const customInput: React.FC<InputProps> = memo(({
   type, name, error, disabled, register,tip,value,rules
 }) => {
   // console.log(error,value)
@@ -73,6 +74,6 @@ const customInput: React.FC<InputProps> = ({
     }
   </div>
   )
-}
+})
 
 export default customInput

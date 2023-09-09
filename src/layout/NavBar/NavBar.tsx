@@ -2,6 +2,7 @@
 import "./NavBar.less";
 import CustomIcon from "../../components/IconFont/CustomIcon";
 import { NavLink } from "react-router-dom";
+import { memo } from "react"
 
 const list = [
   {
@@ -17,7 +18,7 @@ const list = [
     name: "icon-exit-full"
   }
 ]
-const NavBar = () => {
+const NavBar = memo(() => {
   return (
     <nav>
       <ul className="navTop">
@@ -31,5 +32,5 @@ const NavBar = () => {
       </ul>
     </nav>
   )
-}
+})
 export default NavBar

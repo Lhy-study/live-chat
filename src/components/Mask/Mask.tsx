@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback } from "react"
+import React, { ReactNode, useCallback , memo} from "react"
 import "./Mask.less"
 //写一个遮罩层组件
 interface MaskProp {
@@ -6,7 +6,7 @@ interface MaskProp {
     callback: () => void //由父组件传过来一个可以直接关闭遮罩层的方法
 }
 
-const Mask: React.FC<MaskProp> = ({ children, callback }) => {
+const Mask: React.FC<MaskProp> = memo(({ children, callback }) => {
     // const divRef = useRef<HTMLDivElement | null>(null);
     const handleClick = useCallback((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         // console.log(e);
@@ -25,5 +25,5 @@ const Mask: React.FC<MaskProp> = ({ children, callback }) => {
             {children}
         </div>
     )
-}
+})
 export default Mask

@@ -1,13 +1,13 @@
 import "./Layout.less"
 import EmptyState from "@/components/EmptyState/EmptyState"
-import { ReactNode,useState } from "react"
+import { ReactNode,useState ,memo} from "react"
 import { Outlet } from "react-router-dom"
 import PubSub from "pubsub-js"
 import clsx from "clsx"
 interface prop{
   children:ReactNode
 }
-const Layout:React.FC<prop> = ({children}) => {
+const Layout:React.FC<prop> = memo(({children}) => {
   const [isOpen,setIsOpen] = useState(false);
   const Subscriber = (msg: string, value: boolean) => {
     setIsOpen(value)
@@ -30,5 +30,5 @@ const Layout:React.FC<prop> = ({children}) => {
       </div>
     </div>
   )
-}
+})
 export default Layout

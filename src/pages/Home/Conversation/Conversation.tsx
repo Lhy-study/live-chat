@@ -1,10 +1,11 @@
 import "./Conversation.less"
 import Layout from "../Layout"
-const Conversation = () => {
+import { memo } from "react" 
+const Conversation = memo(() => {
   return (
     <Layout>
       <p>nihao</p>
     </Layout>
   )
-}
+})
 export default Conversation
