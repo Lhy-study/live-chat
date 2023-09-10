@@ -1,34 +1,25 @@
 import "./Contacts.less"
-import CustomIcon from "@/components/IconFont/CustomIcon"
-import UserList from "@/components/UserList/UserList"
-import testImage from "@/assets/react.svg"
 import Layout from "../Layout"
 import PubSub from "pubsub-js"
-import { memo } from "react"
+import { memo, useState ,useEffect} from "react"
+import IsContacts from "./children-components/IsContacts"
+import NotContacts from "./children-components/NotContacts"
 
 const Contacts = memo(() => {
-  const handle=()=>{
-    PubSub.publish("openDialog",true)
+  const [state, setSate] = useState(true) //是否为联系人的内容
+  const subscribe=(_:string,value:boolean)=>{
+    setSate(value)
   }
-  const arr = [
-    {
-      url: testImage,
-      name: "nihao",
-      id: 1
-    }
-  ]
+  useEffect(()=>{
+    PubSub.subscribe("isContacts",subscribe)
+  },[])
   return (
     <Layout>
-      <header>
-        <p>联系人</p>
-        <div onClick={handle}>
-          <CustomIcon name="icon-tianjiahaoyou" size="big" />
-        </div>
-      </header>
       {
-        arr.map(item => (
-          <UserList id={item.id} name={item.name} imgUrl={item.url} key={item.id} />
-        ))
+        state ? 
+        <IsContacts />
+        : 
+        <NotContacts />
       }
     </Layout>
   )

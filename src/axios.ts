@@ -20,6 +20,8 @@ request.interceptors.request.use(config=>{
 request.interceptors.response.use(res=>{
     const data=res.data
     if(data.code !=200 && data.code!=201){
+        // console.log(data);
+        
         return Promise.reject(data)
     }    
     return Promise.resolve(res)

@@ -12,7 +12,7 @@ const UserLIst: React.FC<UserListProp> = memo(({
     id
 }) => {
     return (
-        <div key={id} className="userList">
+        <div className="userList" key={id}>
             <div className="avatar">
                 <CustomImage url={imgUrl} />
             </div>

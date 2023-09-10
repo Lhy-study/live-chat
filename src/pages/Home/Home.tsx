@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom"
 import { Navigate } from "react-router";
 import { UserInfoContext, type UserInfoContextType } from "@/Context/userContext"
 import { useContext , memo} from "react";
-import { type UserInfo } from "@/interface";
+import { type UserInfo } from "@/types/interface";
 // import EmptyState from "@/components/EmptyState/EmptyState";
 const Home = memo(() => {
   const { userInfo } = useContext(UserInfoContext) as UserInfoContextType

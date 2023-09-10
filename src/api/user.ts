@@ -22,3 +22,13 @@ export const isLogin=()=>{
         url:"user/islogin"
     })
 }
+
+export const findUser=(username:string)=>{
+    return initRequest({
+        method:"post",
+        url:"user/search",
+        data:{
+            username
+        }
+    })
+}

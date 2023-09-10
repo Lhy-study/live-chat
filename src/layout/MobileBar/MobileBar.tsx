@@ -2,7 +2,7 @@ import CustomIcon from "@/components/IconFont/CustomIcon";
 import "./MobileBar.less"
 import CustomNavLink from "@/components/CustomNavLink/CustomNavLink";
 import PubSub from "pubsub-js";
-import { useState , memo} from "react"
+import { useState ,useEffect} from "react"
 const list = [
   {
     name: "icon-xiaoxi-zhihui",
@@ -17,12 +17,14 @@ const list = [
     path: "/"
   }
 ]
-const MobileBar = memo(() => {
+const MobileBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const Subscriber = (msg: string, value: boolean) => {
-    setIsOpen(value)
-  }
-  PubSub.subscribe("change", Subscriber)
+  useEffect(()=>{
+    const Subscriber = (msg: string, value: boolean) => {
+      setIsOpen(value)
+    }
+    PubSub.subscribe("change", Subscriber)
+  },[])
   return (
     <>
       {
@@ -43,5 +45,5 @@ const MobileBar = memo(() => {
       }
     </>
   )
-})
+}
 export default MobileBar

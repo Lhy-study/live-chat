@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { isLogin } from "../api/user";
-import {type UserInfo, Gender } from "@/interface"
+import {type UserInfo, Gender } from "@/types/interface"
 
 type UserInfoContextType = {
   userInfo: UserInfo | null;

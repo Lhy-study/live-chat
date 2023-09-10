@@ -1,41 +1,70 @@
-header {
-    padding: 1rem 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.contacts {
 
-    p {
-        font-size: 1.5rem;
-        font-weight: bolder;
-        word-spacing: 5px;
-    }
-
-    div {
+    header {
+        padding: 1rem 0;
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 50%;
-        background-color: #e8e1e1;
 
-        &:hover {
-            opacity: .8;
+        p {
+            font-size: 1.5rem;
+            font-weight: bolder;
+            word-spacing: 5px;
         }
-    }
 
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: #e8e1e1;
 
-    @media screen and (max-width:1024px) {
-        .contact-bar {
-            width: 100%;
-
-            .contact-main {
-                border: none;
+            &:hover {
+                opacity: .8;
             }
         }
     }
 
-    .children {
-        flex: 1;
+    span{
+        display: block;
+        cursor: pointer;
+        padding: .5rem;
+        padding-left: 0;
+        text-align: left;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+}
+
+.contacts-false{
+    .reqList{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .reqListInfo{
+            cursor: auto;
+            display: flex;
+            align-items: center;
+
+            .info{
+                margin-left: 5px;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        button{
+            cursor: pointer;
+            padding: .5rem;
+            border-radius: 5px;
+            border: none;
+            font-size: large;
+            background-color: green;
+            color: white;
+        }
     }
 }

@@ -3,7 +3,7 @@ import main from "./LeftSideBar.module.less"
 import CustomImage from "@/components/CustomImage/CustomImage"
 import { useContext , memo} from "react"
 import { UserInfoContext, type UserInfoContextType } from "@/Context/userContext"
-import { type UserInfo } from "@/interface"
+import { type UserInfo } from "@/types/interface"
 import { baseUrl } from "@/baseConfig"
 const LeftSideBar = memo(() => {
   const { userInfo } = useContext(UserInfoContext) as UserInfoContextType
