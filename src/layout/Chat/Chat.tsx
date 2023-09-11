@@ -10,12 +10,12 @@ import PubSub from "pubsub-js"
 const Chat = memo(() => {
   const { uid }=useParams()//拿到uid
   useEffect(()=>{
-    PubSub.publish("change",true);
+    PubSub.publish("EmptyShow",true);
     return ()=>{
-      PubSub.publish("change",false);
+      PubSub.publish("EmptyShow",false);
     }
   },[uid])
-  console.log(uid);
+  // console.log(uid);
   return (
     <div className={main.chat}>
       <TopSider />

@@ -4,15 +4,17 @@ import CustomImage from "../CustomImage/CustomImage";
 interface UserListProp {
     imgUrl: string,
     name: string,
-    id: number
+    id: number,
+    onClick?:()=>void
 }
 const UserLIst: React.FC<UserListProp> = memo(({
     imgUrl,
     name,
-    id
+    id,
+    onClick
 }) => {
     return (
-        <div className="userList" key={id}>
+        <div className="userList" key={id} onClick={onClick}>
             <div className="avatar">
                 <CustomImage url={imgUrl} />
             </div>

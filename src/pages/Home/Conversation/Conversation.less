@@ -1,0 +1,81 @@
+.conversation-h1 {
+    padding: .5rem 0;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    word-spacing: 5px;
+    letter-spacing: 5px;
+}
+
+.not-conv {
+    padding: .5rem;
+
+    p {
+        text-align: center;
+        color: #ccc;
+    }
+}
+
+.conversation-item {
+    cursor: pointer;
+    padding: .3rem;
+    position: relative;
+    border-radius: 7px;
+
+    &:hover {
+        background-color: rgb(245, 245, 245);
+    }
+
+    .conversation-item-main {
+        position: relative;
+        display: flex;
+        gap: 10px;
+
+        img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .txt {
+            width: calc(100% - 60px - 10px);
+            flex: 1;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            justify-content: center;
+            
+
+            p {
+                max-width: 80px;
+                font-size: 1rem;
+                font-weight: bold;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-wrap: nowrap;
+            }
+
+            span {
+                width: 100%;
+                font-size: .8rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-wrap: nowrap;
+                color: #959393;
+            }
+
+        }
+
+        .time {
+            position: absolute;
+            right: 0px;
+            top: 10px;
+            font-size: .8rem;
+            color: #959393;
+        }
+    }
+}
+
+.conversation-check{
+    background-color: rgb(245, 245, 245);
+}

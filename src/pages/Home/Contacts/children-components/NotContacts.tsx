@@ -44,7 +44,9 @@ const NotContacts = () => {
                 setList(res.data.data)
             })
             .catch((e) => {
-                console.log(e);
+                toast.error(`${e.msg}`, {
+                    position: toast.POSITION.TOP_CENTER
+                })
             })
     },[])
     const agree = (id:number) => {

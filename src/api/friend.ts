@@ -11,7 +11,7 @@ export const sendFriReq=(targetId:number)=>{
     })
 }
 
-//获取请求
+//获取好友请求
 export const getFriReq=()=>{
     return initRequest({
         method:"get",
@@ -19,7 +19,7 @@ export const getFriReq=()=>{
     })
 }
 
-//发送请求
+//同意好友请求
 export const agreeFriReq=(frId:number)=>{
     return initRequest({
         method:"post",
@@ -27,5 +27,13 @@ export const agreeFriReq=(frId:number)=>{
         data:{
             frId
         }
+    })
+}
+
+//获取好友列表
+export const getMyFriend=()=>{
+    return initRequest({
+        method:"get",
+        url:"/friend/getMyFriend",
     })
 }

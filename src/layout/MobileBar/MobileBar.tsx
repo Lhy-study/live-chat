@@ -6,11 +6,11 @@ import { useState ,useEffect} from "react"
 const list = [
   {
     name: "icon-xiaoxi-zhihui",
-    path: "/home/contacts"
+    path: "/home/conversation"
   },
   {
     name: "icon-lianxiren",
-    path: "/home/conversation"
+    path: "/home/contacts"
   },
   {
     name: "icon-exit-full",
@@ -20,7 +20,7 @@ const list = [
 const MobileBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   useEffect(()=>{
-    const Subscriber = (msg: string, value: boolean) => {
+    const Subscriber = (_: string, value: boolean) => {
       setIsOpen(value)
     }
     PubSub.subscribe("change", Subscriber)

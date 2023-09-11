@@ -1,6 +1,6 @@
 import "./Layout.less"
 import EmptyState from "@/components/EmptyState/EmptyState"
-import { ReactNode,useState ,memo} from "react"
+import { ReactNode,useState ,memo,useEffect} from "react"
 import { Outlet } from "react-router-dom"
 import PubSub from "pubsub-js"
 import clsx from "clsx"
@@ -9,10 +9,12 @@ interface prop{
 }
 const Layout:React.FC<prop> = memo(({children}) => {
   const [isOpen,setIsOpen] = useState(false);
-  const Subscriber = (msg: string, value: boolean) => {
+  const Subscriber = (_: string, value: boolean) => {
     setIsOpen(value)
   }
-  PubSub.subscribe("change", Subscriber)
+  useEffect(()=>{
+    PubSub.subscribe("EmptyShow", Subscriber)
+  },[isOpen])
   return (
     <div className="parent">
       <div className={clsx(`${isOpen ? 'hidden' : ''}`,"parent-bar")}>

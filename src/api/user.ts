@@ -32,3 +32,13 @@ export const findUser=(username:string)=>{
         }
     })
 }
+
+export const getUserInfo=(uid:number)=>{
+    return initRequest({
+        method:"post",
+        url:"/user/getUserInfo",
+        data:{
+            uid
+        }
+    })
+}
