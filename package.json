@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@types/react-router-dom": "^5.3.3",
+    "@types/socket.io-client": "^3.0.0",
     "axios": "^1.4.0",
     "clsx": "^2.0.0",
     "less": "^4.1.3",
@@ -22,7 +23,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.2",
     "react-router-dom": "^6.14.2",
-    "react-toastify": "^9.1.3"
+    "react-toastify": "^9.1.3",
+    "socket.io-client": "^4.7.2"
   },
   "devDependencies": {
     "@types/pubsub-js": "^1.8.3",

@@ -1,13 +1,11 @@
 import "./Conversation.less"
 import Layout from "../Layout"
 import { memo, useEffect, useState } from "react"
-import { useParams } from "react-router"
-import { getConversation } from "@/api/conversation"
+import { getConversationList } from "@/api/conversation"
 import { converSationInfo, ChatMsgInfo, UserInfo } from "@/types/interface"
-import { useNavigate } from "react-router"
+import { useNavigate ,useParams} from "react-router"
 import { baseUrl } from "@/baseConfig"
 import clsx from "clsx"
-
 interface conversationType extends converSationInfo {
   Users: UserInfo[]
   endChat: ChatMsgInfo | null
@@ -18,7 +16,7 @@ const Conversation = memo(() => {
   const Navigate = useNavigate();
   const [convList, setConvList] = useState<conversationType[]>([])
   useEffect(() => {
-    getConversation()
+    getConversationList()
       .then(({ data }) => {
         // console.log(data);
         setConvList(data.data)

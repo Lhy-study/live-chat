@@ -12,9 +12,19 @@ export const startChat=(friendId:number)=>{
 }
 
 //获取自己参与的会话
-export const getConversation=()=>{
+export const getConversationList=()=>{
     return initRequest({
         method:"get",
         url:"/conversation/getConverIdList"
+    })
+}
+
+export const getConversationChatInfo=(convId:number)=>{
+    return initRequest({
+        method:"post",
+        url:"/conversation/getConverChatInfo",
+        data:{
+            convId
+        }
     })
 }

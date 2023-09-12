@@ -1,4 +1,4 @@
-import { lazy, Suspense,StrictMode , useState} from "react"
+import { lazy, Suspense , useState} from "react"
 import { Route, Routes } from "react-router-dom"
 import { UserInfoProvider } from "@/Context/userContext"
 import AddFriendForm from "@/components/AddFriendFrom/AddFriendForm"
@@ -20,7 +20,7 @@ function App() {
   const Chat=lazy(()=>import("@/layout/Chat/Chat"))
   const UserInfoShow=lazy(()=>import("@/layout/UserInfoShow/UserInfoShow"))
   return (
-    <StrictMode>
+    // <StrictMode>
       <UserInfoProvider>
         <Suspense >
           <Routes>
@@ -41,7 +41,7 @@ function App() {
       }
         </Suspense>
       </UserInfoProvider>
-    </StrictMode>
+    // </StrictMode>
   );
 }
 

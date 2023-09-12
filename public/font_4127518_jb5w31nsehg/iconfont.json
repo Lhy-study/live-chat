@@ -6,6 +6,20 @@
   "description": "实时聊天程序应用",
   "glyphs": [
     {
+      "icon_id": "4896380",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "ec1c",
+      "unicode_decimal": 60444
+    },
+    {
+      "icon_id": "6775442",
+      "name": "返回按钮",
+      "font_class": "yiliaohangyedeICON-",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    },
+    {
       "icon_id": "4406928",
       "name": "男",
       "font_class": "nan",
