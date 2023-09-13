@@ -7,7 +7,6 @@ import { io } from "socket.io-client"
 import { baseUrl } from "@/baseConfig"
 import { chat_info_type } from "@/types/interface"
 import { publish } from "pubsub-js"
-import { sendChatInfo } from "@/api/chat"
 interface FormProp{
   text:string
 }
@@ -18,7 +17,7 @@ interface prop{
 
 const SendMsg = memo<prop>(({convId}) => {
   const { userInfo } = useContext(UserInfoContext) as UserInfoContextType
-  const [socket,setSocket] = useState(io(baseUrl))
+  const [socket] = useState(io(baseUrl))
   const { register, handleSubmit , reset} = useForm<FormProp>({
     mode: "all",
     reValidateMode: "onChange",
@@ -27,10 +26,10 @@ const SendMsg = memo<prop>(({convId}) => {
     //出现多次是这里的问题
     socket.emit("joinSession",convId);
     socket.on("message",(message)=>{
-      console.log(11);
+      // console.log(11);
       publish("message",message)
     })
-    console.log('测试');
+    // console.log('测试');
     
   },[convId,socket])
   //点击提交按钮
@@ -41,13 +40,6 @@ const SendMsg = memo<prop>(({convId}) => {
       content:text,
       contentType:chat_info_type.TEXT
     });
-    sendChatInfo(convId,(userInfo?.uid) as number,text,chat_info_type.TEXT)
-      .then(({data})=>{
-        console.log(data.data);
-      })
-      .catch((e)=>{
-        console.log(e);
-      })
       reset()
   }
   return (
