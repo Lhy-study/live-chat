@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4127518 */
-  src: url('iconfont.woff2?t=1694484358391') format('woff2'),
-       url('iconfont.woff?t=1694484358391') format('woff'),
-       url('iconfont.ttf?t=1694484358391') format('truetype');
+  src: url('iconfont.woff2?t=1694950147280') format('woff2'),
+       url('iconfont.woff?t=1694950147280') format('woff'),
+       url('iconfont.ttf?t=1694950147280') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,42 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-maikefeng:before {
+  content: "\e8c2";
+}
+
+.icon-wenjianjia:before {
+  content: "\ec17";
+}
+
+.icon-shengboyuyinxiaoxi:before {
+  content: "\e8c4";
+}
+
+.icon-ppt:before {
+  content: "\e650";
+}
+
+.icon-pdf:before {
+  content: "\e64f";
+}
+
+.icon-WORD:before {
+  content: "\e640";
+}
+
+.icon-yasuobao:before {
+  content: "\e64d";
+}
+
+.icon-excel-:before {
+  content: "\e601";
+}
+
+.icon-wenjian:before {
+  content: "\e60a";
 }
 
 .icon-gengduo:before {

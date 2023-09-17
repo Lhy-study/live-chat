@@ -6,6 +6,69 @@
   "description": "实时聊天程序应用",
   "glyphs": [
     {
+      "icon_id": "1727442",
+      "name": "213麦克风",
+      "font_class": "maikefeng",
+      "unicode": "e8c2",
+      "unicode_decimal": 59586
+    },
+    {
+      "icon_id": "4893191",
+      "name": "文件夹",
+      "font_class": "wenjianjia",
+      "unicode": "ec17",
+      "unicode_decimal": 60439
+    },
+    {
+      "icon_id": "1727449",
+      "name": "214声波、语音消息",
+      "font_class": "shengboyuyinxiaoxi",
+      "unicode": "e8c4",
+      "unicode_decimal": 59588
+    },
+    {
+      "icon_id": "4031008",
+      "name": "ppt",
+      "font_class": "ppt",
+      "unicode": "e650",
+      "unicode_decimal": 58960
+    },
+    {
+      "icon_id": "4031010",
+      "name": "pdf",
+      "font_class": "pdf",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "4628497",
+      "name": "WORD",
+      "font_class": "WORD",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "5121528",
+      "name": "压缩包",
+      "font_class": "yasuobao",
+      "unicode": "e64d",
+      "unicode_decimal": 58957
+    },
+    {
+      "icon_id": "8231960",
+      "name": "excel-01",
+      "font_class": "excel-",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "19664154",
+      "name": "文件",
+      "font_class": "wenjian",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
       "icon_id": "4896380",
       "name": "更多",
       "font_class": "gengduo",

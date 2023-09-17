@@ -5,16 +5,10 @@ import { type ChatMsgInfo } from "@/types/interface"
 import { getChatInfoList } from "@/api/chat"
 import { UserInfoContext, type UserInfoContextType } from "@/Context/userContext"
 import { subscribe , unsubscribe} from "pubsub-js"
-import clsx from "clsx"
-import CustomImage from "../CustomImage/CustomImage"
 import { baseUrl } from "@/baseConfig"
-
-// interface messageType {
-//   convId: number
-//   senderId: number
-//   content: string
-//   contentType: chat_info_type
-// }
+import clsx from "clsx"
+import SwitchChatType from "../SwitchChatType/SwitchChatType"
+import CustomImage from "../CustomImage/CustomImage"
 
 const ChatInfo = memo(() => {
   const { userInfo } = useContext(UserInfoContext) as UserInfoContextType
@@ -35,7 +29,7 @@ const ChatInfo = memo(() => {
   useEffect(() => {
     const subScribeFun = (_: string, data: ChatMsgInfo) => {
       //这里做实时聊天时socket.io放回来的
-      
+      // console.log(data);
       if(data){
         setChatInfoList([...chatInfoList , data])
       }
@@ -55,14 +49,19 @@ const ChatInfo = memo(() => {
           <div key={item.chatInfoId} className={
             clsx('chatInfo-item', item.senderInfo.uid === userInfo?.uid ? 'isMe' : "") 
           } ref={divRef}>
-            <div className="userInfo">
-              <div className="userInfo-main">
-                <div className="">
-                  <CustomImage url={baseUrl + item.senderInfo.avatar} width="60px" height="60px" />
-                  <p>{item.content}</p>
-                </div>
-                <span>{new Date(item.sendTime).toLocaleDateString()}</span>
+            <div className="time">
+              <p>{`${new Date(item.sendTime).toLocaleDateString()} ${new Date(item.sendTime).toLocaleTimeString()}`}</p>
+            </div>
+            <div className="chatInfo-item-main">
+              <div className="userInfo">
+                <CustomImage url={baseUrl + item.senderInfo.avatar} width="60px" height="60px" />
               </div>
+              <SwitchChatType 
+                isMe={item.senderInfo.uid === userInfo?.uid}
+                content={item.content}
+                contentType={item.contentType}
+                username={item.senderInfo.username}
+              />
             </div>
           </div>
         ))

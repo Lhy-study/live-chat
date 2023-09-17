@@ -14,7 +14,10 @@ const UserInfoShow = () => {
     const goChat=()=>{
         startChat(parseInt(uid!))
             .then(({data})=>{
-                Navigate(`/home/conversation/${data.data[0].convId}`)
+                // console.log(data);
+                if(data.data[0].convId){
+                    Navigate(`/home/conversation/${data.data[0].convId}`)
+                }
             })
             .catch((e)=>{
                 console.log(e);
@@ -35,7 +38,7 @@ const UserInfoShow = () => {
             .catch((e)=>{
                 console.log(e);
             })
-    },[])
+    },[uid])
   return (
     <div className="userInfoShow">
         <div className="userInfoShow-main">

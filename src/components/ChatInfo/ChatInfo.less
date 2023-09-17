@@ -6,44 +6,34 @@
     flex-direction: column; //反转过来 ，因为俺时间顺序
 
     .chatInfo-item{
-        display: flex;
-        gap: 10px;
         width: 100%;
 
-        .userInfo-main{
+        .time{
             display: flex;
-            flex-direction: column;
-
-            &>div{
-                display: flex;
-                align-items: center;
-
-                p{
-                    background-color: #ccc;
-                    height: 100%;
-                    padding: .5rem;
-                    margin: 0 10px;
-                    border-radius: 7px;
-                    color: white;
-                }
-            }
-
-            &>span{
+            align-content: center;
+            justify-content: center;
+            margin:1rem 0;
+            p{
+                text-align: center;
                 font-size: .8rem;
-                color: #ccc;
+                padding: 2px;
+                background-color: #3c3b3b4d;
+                opacity: .8;
+                color: white;
             }
+        }
+
+        .chatInfo-item-main{
+            display: flex;
+            gap: 10px;
         }
     }
 
     .isMe{
         flex-direction: row-reverse;
-
-        &>div>div>div{
+        
+        .chatInfo-item-main{
             flex-direction: row-reverse;
-        }
-
-        &>div>div{
-            align-items: flex-end;
         }
     }
 }

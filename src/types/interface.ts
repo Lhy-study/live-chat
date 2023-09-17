@@ -6,7 +6,10 @@ export enum Gender {
 
 export enum chat_info_type{
     TEXT,
-    IMG
+    IMG,
+    VEDIO, //视频
+    OTHERFILE, //文件
+    VOICE, //语音
 }
 
 export interface UserInfo {
@@ -32,5 +35,10 @@ export interface ChatMsgInfo{
     sendTime:string
     covId:number
     senderInfo:UserInfo
+}
+
+export interface ChatMsgContent{
+    contentType: chat_info_type
+    content:string
 }
 

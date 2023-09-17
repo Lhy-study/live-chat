@@ -40,7 +40,9 @@ const Conversation = memo(() => {
                 <img src={baseUrl + item.Users[0].avatar} alt="" />
                 <div className="txt">
                   <p>{item.Users[0].username}</p>
-                  <span>{ item.endChat? item.endChat.content : "默认消息：还没开始聊天哦~" }</span>
+                  {
+                    !item.endChat ? <span>默认消息：还没开始聊天哦~</span> : <span>{ item.endChat.contentType.toString() === 'TEXT' ? item.endChat.content : '非文本消息' }</span>
+                  }
                 </div>
                 <div className="time">
                   { new Date(item.createTime).toDateString() }
