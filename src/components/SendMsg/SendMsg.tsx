@@ -69,7 +69,7 @@ const SendMsg = memo<prop>(({ convId }) => {
             toast.warning("图片数据大小不可以超过2m",{autoClose:1500})
             return;
           } else if (element.type !== "image/jpeg" && element.type !== "image/png" && element.type!=="image/webp") {
-            toast.warning("图片格式不正确,请确保图片为jpg或png格式",{autoClose:1500})
+            toast.warning("图片格式不正确,请确保图片为jpg、png或webp格式",{autoClose:1500})
             return;
           }
         }
@@ -117,7 +117,7 @@ const SendMsg = memo<prop>(({ convId }) => {
         const file=fileRef.current?.files[0];
         if(file.type != "image/jpeg" && file.type != "image/png" && file.type != "image/webp"){
           if(file.size > 1024 * 1024 * 20){
-            toast.warning("文件大小不可以超过10M",{autoClose:1500})
+            toast.warning("文件大小不可以超过20M",{autoClose:1500})
           }
           console.log(file);
           

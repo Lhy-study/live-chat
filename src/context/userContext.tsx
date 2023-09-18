@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 import { isLogin } from "../api/user";
-import {type UserInfo, Gender } from "@/types/interface"
+import {type UserInfo, } from "@/types/interface"
 
 type UserInfoContextType = {
   userInfo: UserInfo | null;
@@ -23,7 +23,7 @@ function UserInfoProvider({ children }: childrenProps) {
     isLogin().then(({ data }) => {
       setUserInfo(data.data as UserInfo)
     }).catch(() => {
-      setUserInfo({ uid: NaN, username: "", avatar: "", gender: Gender.unknown })
+      setUserInfo({ uid: NaN, username: "", avatar: "", gender: 'unknown' })
     })
   }, []);
 

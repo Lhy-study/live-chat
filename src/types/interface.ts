@@ -1,8 +1,10 @@
-export enum Gender {
-    'female' = 1,
-    'male' = 2,
-    'unknown' = 3
-}
+// export enum Gender {
+//     'female' = 1,
+//     'male' = 2,
+//     'unknown' = 3
+// }
+
+export type Gender='female'|'male'|'unknown'
 
 export enum chat_info_type{
     TEXT,

@@ -4,6 +4,7 @@ import { chat_info_type, type ChatMsgContent } from "@/types/interface"
 import { baseUrl } from "@/baseConfig"
 import CustomIcon from "../IconFont/CustomIcon"
 import { saveAs } from "file-saver"
+import { publish } from "pubsub-js"
 function getFileName(url:string){
     const ext= url.replace("/public/file/","").split(".")[1]
     return `${ext}文件`
@@ -77,7 +78,7 @@ const SwitchChatType: React.FC<SwitchChatTypeProp> = ({
                 <div className="IMG">
                     <p className={clsx(isMe ? 'hidden' : '')}>{username}</p>
                     <div className="content">
-                        <img src={baseUrl+content} alt="" />
+                        <img src={baseUrl+content} alt="" onClick={()=>{publish("open",true);publish("showImg",[baseUrl+content])}}/>
                     </div>
                 </div>
             )

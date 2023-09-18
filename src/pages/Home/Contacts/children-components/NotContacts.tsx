@@ -10,9 +10,9 @@ import clsx from "clsx"
 
 function checkoutIcon(key:Gender) {
     switch (key) {
-        case Gender.male:
+        case 'male':
             return 'icon-nan'
-        case Gender.female:
+        case 'female':
             return 'icon-nv'
         default:
             return 'icon-yincang';

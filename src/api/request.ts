@@ -5,7 +5,10 @@ interface configType{
     url:string
     method:string,
     data?:unknown,
-    params?:unknown
+    params?:unknown,
+    headers?: {
+        [key: string]: string | string[];
+      };
 }
 
 //做一个初始化axios封装(不包括防止重复提交和缓存数据)
