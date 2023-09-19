@@ -1,5 +1,6 @@
 import "./Conversation.less"
 import Layout from "../Layout"
+import CurrentUser from "@/components/CurrentUser/CurrentUser"
 import { memo, useEffect, useState } from "react"
 import { getConversationList } from "@/api/conversation"
 import { converSationInfo, ChatMsgInfo, UserInfo } from "@/types/interface"
@@ -27,7 +28,12 @@ const Conversation = memo(() => {
   }, [])
   return (
     <Layout>
-      <h1 className="conversation-h1">会话聊天</h1>
+      <div className="conversation-top">
+        <h1 className="conversation-h1">会话聊天</h1>
+        <div className="mobile-user">
+          <CurrentUser />
+        </div>
+      </div>
       {
         convList.length == 0 ?
           <div className="not-conv"> <p>您暂时还没有对话哦</p> </div> :

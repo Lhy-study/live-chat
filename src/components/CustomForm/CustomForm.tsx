@@ -50,7 +50,7 @@ const AuthForm: React.FC = memo(() => {
 
         setTimeout(() => {
           navigate("/home/conversation")
-        }, 3000)
+        }, 1000)
       }).finally(() => {
         setDisabled(false)
         //兜底操作
@@ -60,7 +60,7 @@ const AuthForm: React.FC = memo(() => {
         promise,
         {
           pending: '登录中',
-          success: '用户登录成功 👌,3s后将跳转到聊天页面',
+          success: '用户登录成功 👌,1s后将跳转到聊天页面',
           error: '登录失败🤯，请检查用户名或密码'
         }
       )
@@ -153,7 +153,7 @@ const AuthForm: React.FC = memo(() => {
       <ToastContainer
         position='top-center'
         theme="colored"
-        autoClose={3000}
+        autoClose={1000}
       />
     </form>
   );

@@ -1,0 +1,29 @@
+.cofItem {
+    padding: .5rem 1rem;
+    margin: .5rem 0 1rem;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    gap: 10px;
+
+    @avatar: 3rem;
+
+    .user {
+        img {
+            cursor: pointer;
+            border-radius: 5px;
+            width: @avatar;
+            height: @avatar;
+            object-fit: cover;
+        }
+    }
+
+    .content-main {
+        p {
+            white-space: pre-line;
+            max-width: 450px;
+            margin-bottom: .8rem;
+        }
+    }
+
+
+}

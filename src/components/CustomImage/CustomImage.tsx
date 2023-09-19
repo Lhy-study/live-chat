@@ -5,11 +5,12 @@ interface imageProps {
     url: string
     width?: string
     height?: string,
-    onClick?:()=>void
+    onClick?:()=>void,
+    title?:string
 }
 //这里单独为图片单独写一个组件是因为当发生防止路径错误或者其他可控的因素是，使用一张图片进行代替
 const CustomImage: React.FC<imageProps> = memo(({
-    url, width = '40px', height = '40px',onClick
+    url, width = '40px', height = '40px',onClick,title='图片'
 }) => {
     const [imgUrl,setUrl]=useState(url);
     const err:ReactEventHandler<HTMLImageElement>=useCallback(()=>{
@@ -21,6 +22,7 @@ const CustomImage: React.FC<imageProps> = memo(({
             style={{ width, height,objectFit:"cover",borderRadius:"50%",cursor:"pointer"}} 
             onError={err}
             onClick={onClick}
+            title={title}
         />
     )
 })

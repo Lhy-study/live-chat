@@ -1,0 +1,93 @@
+.publishFC{
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    height: 0;
+    transition: .5s linear;
+
+    form{
+        border-radius: 5px;
+        background-color: rgba(250, 250, 250,0.9);
+        padding: 0.5rem 1rem;
+        border-bottom: 2px solid #ccc;
+
+        textarea{
+            width: 100%;
+            outline: none;
+            resize: none;
+            border: none;
+            background-color: rgba(250, 250, 250,1);
+        }
+
+        ul.preview{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 350px;
+            li{
+                img{
+                    cursor: pointer;
+                    width: 110px;
+                    height: 110px;
+                    object-fit: cover; 
+                }
+            }
+        }
+
+        ul.control{
+            display: flex;
+            position: relative;
+
+            li {
+                @size:1.5rem;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: @size;
+                line-height: @size;
+                height: @size;
+                width: @size;
+                text-align: center;
+                margin-right: .7rem;
+
+                &:hover {
+                    color: rgb(86, 173, 192);
+                }
+            }
+
+            li.icon-fasong{
+                position: absolute;
+                right: 0;
+            }
+
+            .emojiList{
+                position: absolute;
+                top: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0px;
+                width: 250px;
+                max-width: 100vw;
+                padding: 3px;
+                border: 1px solid black;
+                border-radius: 5px;
+                box-shadow: 0 0 3px 0 #1f1c1c;
+                background-color: #fff;
+        
+                p{
+                    font-size: 1.1rem;
+                    cursor: pointer;
+                    text-align: center;
+                }
+            }
+
+            .check{
+                color: #56adc0;
+            }
+        }
+    }
+}
+
+.show-FC{
+    height: calc(100% - 3rem);
+    // overflow-y: auto;
+}

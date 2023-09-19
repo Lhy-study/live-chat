@@ -13,8 +13,8 @@ const list = [
     path: "/home/contacts"
   },
   {
-    name: "icon-exit-full",
-    path: "/"
+    name: "icon-pengyouquan",
+    path: "/home/friendcircle"
   }
 ]
 const MobileBar = () => {

@@ -40,15 +40,19 @@ const ChatInfo = memo(() => {
     }
   }, [ chatInfoList])
   useEffect(() => {
-    divRef.current?.scrollIntoView({behavior:"smooth"})
+    if(chatInfoList.length){
+      setTimeout(()=>{
+        divRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+      },1000 * 0)
+    }  
   }, [ chatInfoList])
   return (
     <div className="chatInfo">
       {
-        chatInfoList.map((item) => (
+        chatInfoList.map((item,index) => (
           <div key={item.chatInfoId} className={
             clsx('chatInfo-item', item.senderInfo.uid === userInfo?.uid ? 'isMe' : "") 
-          } ref={divRef}>
+          } ref={ index===chatInfoList.length-1 ? divRef :null }>
             <div className="time">
               <p>{`${new Date(item.sendTime).toLocaleDateString()} ${new Date(item.sendTime).toLocaleTimeString()}`}</p>
             </div>

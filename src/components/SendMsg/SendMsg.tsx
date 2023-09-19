@@ -3,21 +3,12 @@ import { memo, useContext, useEffect, useState, useRef } from "react"
 import { UserInfoContext, UserInfoContextType } from "@/Context/userContext"
 import { useForm } from "react-hook-form"
 import { io } from "socket.io-client"
-import { baseUrl } from "@/baseConfig"
+import { baseUrl , emoList} from "@/baseConfig"
 import { publish } from "pubsub-js"
 import { toast , ToastContainer } from "react-toastify"
 import IconFont from "@/components/IconFont/CustomIcon"
+import useOutsideClick from "@/hooks/clickOutside"
 import clsx from "clsx"
-
-const emoList: Array<string> = [
-  "😀", "😃", "😄", "😁", "😆", "😅", "🤣", "😂", "🙂", "🙃",
-  "😉", "😊", "😇", "🥰", "😍", "🤩", "😘", "😗", "😚", "🥱",
-  "😙", "😋", "😛", "😜", "🤪", "😝", "🤑", "🤗", "🤭", "🤫",
-  "🤔", "🤐", "🤨", "😐", "😶", "😏", "😒", "🙄", "😬", "🤥",
-  "😶", "😔", "😪", "🤤", "😴", "😷", "🤒", "🤕", "😤", "😠",
-  "🤢", "🤮", "🤧", "🥵", "🥶", "🥴", "😵", "🤯", "😵", "😭",
-  "🥳", "😎", "🤓", "🧐", "😕", "😟", "🙁", "☹️", "😮", "😯",
-]
 interface FormProp {
   text: string
 }
@@ -28,6 +19,8 @@ interface prop {
 
 const SendMsg = memo<prop>(({ convId }) => {
   const imgRef = useRef<HTMLInputElement | null>(null)
+  const emojiIconRef = useRef<HTMLDivElement | null>(null)
+  const emojiListRef = useRef<HTMLDivElement | null>(null)
   const fileRef = useRef<HTMLInputElement | null>(null)
   const { userInfo } = useContext(UserInfoContext) as UserInfoContextType
   const [socket] = useState(io(baseUrl))
@@ -36,6 +29,9 @@ const SendMsg = memo<prop>(({ convId }) => {
     mode: "all",
     reValidateMode: "onChange",
   })
+
+  useOutsideClick(emojiListRef,()=>setShowEmoji(false),emojiIconRef)
+
   useEffect(() => {
     //出现多次是这里的问题
     socket.emit("joinSession", convId);
@@ -87,19 +83,6 @@ const SendMsg = memo<prop>(({ convId }) => {
             }
           )
         }
-
-        // for (let index = 0; index < files.length; index++) {
-        //   const fr = new FileReader();
-        //   const element = files[index];
-        //   new Promise((resolve)=>{
-        //     fr.readAsDataURL(element)
-        //     fr.onload=()=>{
-        //       resolve(fr.result)
-        //     }
-        //   }).then((value)=>{
-        //     socket.emit("sendMsg",)
-        //   })
-        // }
       }else{
         toast.warning("发送的图片不可以超过九张",{autoClose:1500})
       }
@@ -140,7 +123,7 @@ const SendMsg = memo<prop>(({ convId }) => {
       <input type="file" ref={fileRef} name="file" style={{ display: "none" }} />
       <form className="sendMsg">
         <div className="widgets">
-          <div className={clsx("widgets-item", showEmoji ? 'check' : '')} >
+          <div className={clsx("widgets-item", showEmoji ? 'check' : '')} ref={emojiIconRef}>
             <IconFont name="icon-biaoqing1" onClick={() => setShowEmoji(!showEmoji)} />
           </div>
           <div className="widgets-item" >
@@ -155,7 +138,7 @@ const SendMsg = memo<prop>(({ convId }) => {
           <IconFont name="icon-fasong" onClick={()=>submit({text:watch('text')})}/>
         </div>
         {
-          showEmoji && <div className="emojiList">
+          showEmoji && <div className="emojiList" ref={emojiListRef}>
             {
               emoList.map((item, index) => (
                 <p key={index} onClick={() => { setValue('text', watch('text') + item) }}>{item}</p>

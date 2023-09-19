@@ -6,6 +6,13 @@
   "description": "实时聊天程序应用",
   "glyphs": [
     {
+      "icon_id": "28953252",
+      "name": "编辑、发表",
+      "font_class": "a-bianjifabiao",
+      "unicode": "e7a8",
+      "unicode_decimal": 59304
+    },
+    {
       "icon_id": "28396593",
       "name": "爱心",
       "font_class": "aixin",

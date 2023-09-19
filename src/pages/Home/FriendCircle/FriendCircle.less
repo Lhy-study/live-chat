@@ -1,0 +1,83 @@
+.friendCircle{
+    height: 100%;
+    border-left: 2px solid #e5e7eb;
+    padding: 1rem 0rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .friendCircle-main{
+        position: relative;
+        width: calc(1000px - 5rem);
+        height: 100%;
+        border: 2px solid #ccc;
+        box-shadow: 0 0 3px 1px #b2b5ba;
+        // background-color: aqua;
+
+        .topHeader{
+            padding: .5rem 1rem;
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 2px solid #ccc;
+
+            &>div{
+                position: absolute;
+                color: #ccc;
+            }
+
+            header{
+                font-size: x-large;
+                text-align: center;
+                font-family: kaiti;
+            }
+
+            div.icon-one{
+                display: none;
+                left: 10px;
+            }
+
+            div.icon-two{
+                right: 10px;
+            }
+
+            .check{
+                color:#00c6cf;
+            }
+            
+        }
+
+        .FC-content{
+            height: calc(100% - 3rem);
+            overflow: auto;
+        }
+    }
+
+}
+
+@media screen and (max-width:1024px) and (min-width:768px){
+    .friendCircle{
+        padding: 0.5rem 2rem;
+        border: none;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .friendCircle{
+        padding: 0rem;
+        border: none;
+
+        .friendCircle-main{
+            width: 100%;
+            border: none;
+            box-shadow: none;
+        }
+    }
+}
+
+@media screen and (max-width:1024px){
+    .friendCircle>.friendCircle-main>.topHeader>div.icon-one{
+        display: block;
+    }
+}

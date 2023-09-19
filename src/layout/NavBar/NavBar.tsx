@@ -15,6 +15,10 @@ const list = [
     path:"/contacts"
   },
   {
+    name:"icon-pengyouquan",
+    path:"/friendcircle"
+  },
+  {
     name: "icon-exit-full"
   }
 ]
